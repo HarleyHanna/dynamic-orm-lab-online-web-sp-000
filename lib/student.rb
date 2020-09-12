@@ -7,11 +7,4 @@ class Student < InteractiveRecord
   self.column_names.each do |col_name|
     attr_accessor col_name.to_sym
   end
-  
-  def self.find_by(attribute)
-    attribute.each do |key, value|
-      sql = "SELECT * FROM #{self.table_name} WHERE #{key} = #{value}"
-      DB[:conn].execute(sql)
-    end
-  end
 end
