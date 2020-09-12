@@ -9,7 +9,10 @@ class Student < InteractiveRecord
   end
   
   def self.find_by(attribute)
-    sql = "SELECT * FROM #{self.table_name} WHERE =  "
+    self.column_names.each do |col_name|
+      sql = "SELECT * FROM #{self.table_name} WHERE = #col_name = attribute"
+    end
+    
     DB[:conn].execute(sql, name)
   end
 
