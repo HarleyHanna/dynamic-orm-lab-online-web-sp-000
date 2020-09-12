@@ -9,6 +9,9 @@ class Student < InteractiveRecord
   end
   
   def self.find_by(attribute)
+    attribute.each do |key, value|
+      sql = "SELECT * FROM "
+    
     
     DB[:conn].execute(sql, name)
   end
